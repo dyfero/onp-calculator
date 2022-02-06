@@ -26,14 +26,3 @@ class Onp:
                 stack.append(res)
 
         return stack.pop()
-
-    # def check(self, onp):
-    #     size = 0
-    #     for elem in onp:
-    #         if is_numeric(elem):
-    #             size += 1
-    #         elif elem in self.operators:
-    #             size -= 1
-    #         else:
-    #             return False
-    #     return size == 1
