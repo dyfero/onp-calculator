@@ -1,11 +1,21 @@
 from abc import ABC
 
-from helper import is_numeric
-from input import Input
+from classes.constants.operator import OperatorEnum
+from classes.helpers.helper import is_numeric
+from classes.input import Input
 
 
 class Sign(Input, ABC):
-    blocker = ['+', '-', '/', '*', '=', '^', ')', '.']
+    blocker = [
+        OperatorEnum.ADD,
+        OperatorEnum.SUB,
+        OperatorEnum.DIV,
+        OperatorEnum.MUL,
+        OperatorEnum.EQL,
+        OperatorEnum.POW,
+        OperatorEnum.RBR,
+        OperatorEnum.DOT
+    ]
 
     def __init__(self, value):
         super().__init__()
@@ -16,7 +26,7 @@ class Sign(Input, ABC):
             return
 
         last = output.buffer[-1]
-        if is_numeric(last) or last == ')':
+        if is_numeric(last) or last == OperatorEnum.RBR:
             output.buffer.append(self.value)
         else:
             output.buffer.pop()

@@ -1,5 +1,5 @@
 from kivy.uix.widget import Widget
-from output import Output
+from classes.output import Output
 
 
 class CalculatorLayout(Widget):

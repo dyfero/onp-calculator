@@ -1,8 +1,9 @@
-#:import Number number.Number
-#:import Dot dot.Dot
-#:import LeftBracket left_bracket.LeftBracket
-#:import RightBracket right_bracket.RightBracket
-#:import Sign sign.Sign
+#:import Number classes.number.Number
+#:import Dot classes.dot.Dot
+#:import LeftBracket classes.left_bracket.LeftBracket
+#:import RightBracket classes.right_bracket.RightBracket
+#:import Sign classes.sign.Sign
+#:import OperatorEnum classes.constants.operator.OperatorEnum
 
 <Button>
     font_size: 32
@@ -69,12 +70,12 @@
             Button:
                 id: btn_pow
                 text: '^'
-                on_press: root.append(Sign('^'))
+                on_press: root.append(Sign(OperatorEnum.POW))
                 background_color: 26/255, 79/255, 163/255, 0.9
             Button:
                 id: btn_div
                 text: '/'
-                on_press: root.append(Sign('/'))
+                on_press: root.append(Sign(OperatorEnum.DIV))
                 background_color: 26/255, 79/255, 163/255, 0.9
 
             # row 2
@@ -93,7 +94,7 @@
             Button:
                 id: btn_mul
                 text: '*'
-                on_press: root.append(Sign('*'))
+                on_press: root.append(Sign(OperatorEnum.MUL))
                 background_color: 26/255, 79/255, 163/255, 0.9
 
             # row 3
@@ -112,7 +113,7 @@
             Button:
                 id: btn_sub
                 text: '-'
-                on_press: root.append(Sign('-'))
+                on_press: root.append(Sign(OperatorEnum.SUB))
                 background_color: 26/255, 79/255, 163/255, 0.9
 
             # row 4
@@ -131,7 +132,7 @@
             Button:
                 id: btn_add
                 text: '+'
-                on_press: root.append(Sign('+'))
+                on_press: root.append(Sign(OperatorEnum.ADD))
                 background_color: 26/255, 79/255, 163/255, 0.9
 
             # row 5

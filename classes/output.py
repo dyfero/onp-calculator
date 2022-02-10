@@ -1,7 +1,8 @@
-from bracket import __decrement_bracket__, __increment_bracket__, __clear_bracket_counter__
-from converter import Converter
-from helper import is_numeric
-from onp import Onp
+from classes.bracket import __decrement_bracket__, __increment_bracket__, __clear_bracket_counter__
+from classes.converter import Converter
+from classes.constants.operator import OperatorEnum
+from classes.helpers.helper import is_numeric
+from classes.onp import Onp
 
 
 class Output:
@@ -27,12 +28,12 @@ class Output:
         if is_numeric(last):
             elem = last[:-1]
             self.buffer.pop()
-            if elem and elem != '-':
+            if elem and elem != OperatorEnum.SUB:
                 self.buffer.append(elem)
-        elif last == '(':
+        elif last == OperatorEnum.LBR:
             __decrement_bracket__()
             self.buffer.pop()
-        elif last == ')':
+        elif last == OperatorEnum.RBR:
             __increment_bracket__()
             self.buffer.pop()
         else:
@@ -48,10 +49,10 @@ class Output:
             return
 
         elem = self.buffer.pop()
-        if elem[0] == '-':
+        if elem[0] == OperatorEnum.SUB:
             elem = elem[1:]
         else:
-            elem = '-' + elem
+            elem = OperatorEnum.SUB + elem
 
         self.buffer.append(elem)
         self.refresh_label()
