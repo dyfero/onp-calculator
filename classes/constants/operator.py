@@ -1,4 +1,4 @@
-class OperatorEnum:
+class OperatorConst:
     ADD = '+'
     SUB = '-'
     MUL = '*'

@@ -1,20 +1,20 @@
 from abc import ABC
 
-from classes.constants.operator import OperatorEnum
+from classes.constants.operator import OperatorConst
 from classes.helpers.helper import is_numeric
 from classes.input import Input
 
 
 class Sign(Input, ABC):
     blocker = [
-        OperatorEnum.ADD,
-        OperatorEnum.SUB,
-        OperatorEnum.DIV,
-        OperatorEnum.MUL,
-        OperatorEnum.EQL,
-        OperatorEnum.POW,
-        OperatorEnum.RBR,
-        OperatorEnum.DOT
+        OperatorConst.ADD,
+        OperatorConst.SUB,
+        OperatorConst.DIV,
+        OperatorConst.MUL,
+        OperatorConst.EQL,
+        OperatorConst.POW,
+        OperatorConst.RBR,
+        OperatorConst.DOT
     ]
 
     def __init__(self, value):
@@ -26,7 +26,7 @@ class Sign(Input, ABC):
             return
 
         last = output.buffer[-1]
-        if is_numeric(last) or last == OperatorEnum.RBR:
+        if is_numeric(last) or last == OperatorConst.RBR:
             output.buffer.append(self.value)
         else:
             output.buffer.pop()

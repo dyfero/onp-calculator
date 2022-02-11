@@ -1,6 +1,6 @@
 from classes.bracket import __decrement_bracket__, __increment_bracket__, __clear_bracket_counter__
 from classes.converter import Converter
-from classes.constants.operator import OperatorEnum
+from classes.constants.operator import OperatorConst
 from classes.helpers.helper import is_numeric
 from classes.onp import Onp
 
@@ -28,12 +28,12 @@ class Output:
         if is_numeric(last):
             elem = last[:-1]
             self.buffer.pop()
-            if elem and elem != OperatorEnum.SUB:
+            if elem and elem != OperatorConst.SUB:
                 self.buffer.append(elem)
-        elif last == OperatorEnum.LBR:
+        elif last == OperatorConst.LBR:
             __decrement_bracket__()
             self.buffer.pop()
-        elif last == OperatorEnum.RBR:
+        elif last == OperatorConst.RBR:
             __increment_bracket__()
             self.buffer.pop()
         else:
@@ -49,10 +49,10 @@ class Output:
             return
 
         elem = self.buffer.pop()
-        if elem[0] == OperatorEnum.SUB:
+        if elem[0] == OperatorConst.SUB:
             elem = elem[1:]
         else:
-            elem = OperatorEnum.SUB + elem
+            elem = OperatorConst.SUB + elem
 
         self.buffer.append(elem)
         self.refresh_label()
@@ -80,4 +80,4 @@ class Output:
     def map_result(self, result):
         if result.is_integer():
             return int(result)
-        return result
+        return round(result, 5)

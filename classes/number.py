@@ -1,6 +1,6 @@
 from abc import ABC
 
-from classes.constants.operator import OperatorEnum
+from classes.constants.operator import OperatorConst
 from classes.input import Input
 from classes.helpers.helper import is_numeric
 
@@ -11,8 +11,8 @@ class Number(Input, ABC):
         self.value = str(value)
 
     def append(self, output):
-        if output.buffer and output.buffer[-1] == OperatorEnum.RBR:
-            output.buffer.append(OperatorEnum.MUL)
+        if output.buffer and output.buffer[-1] == OperatorConst.RBR:
+            output.buffer.append(OperatorConst.MUL)
             output.buffer.append(self.value)
         elif output.buffer and is_numeric(output.buffer[-1]):
             elem = output.buffer.pop()

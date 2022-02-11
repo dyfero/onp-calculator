@@ -1,6 +1,6 @@
 from abc import ABC
 
-from classes.constants.operator import OperatorEnum
+from classes.constants.operator import OperatorConst
 from classes.input import Input
 from classes.helpers.helper import is_numeric
 
@@ -13,7 +13,7 @@ class Dot(Input, ABC):
         if not output.buffer:
             return
         elem = output.buffer[-1]
-        if is_numeric(elem) and not OperatorEnum.DOT in elem:
+        if is_numeric(elem) and not OperatorConst.DOT in elem:
             elem = output.buffer.pop()
             elem += '.'
             output.buffer.append(elem)

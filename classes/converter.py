@@ -1,17 +1,17 @@
-from classes.constants.operator import OperatorEnum
+from classes.constants.operator import OperatorConst
 from classes.helpers.helper import is_numeric
 
 
 class Converter:
     priority = {
-        OperatorEnum.LBR: 0,
-        OperatorEnum.ADD: 1,
-        OperatorEnum.SUB: 1,
-        OperatorEnum.RBR: 1,
-        OperatorEnum.MUL: 2,
-        OperatorEnum.DIV: 2,
-        OperatorEnum.MOD: 2,
-        OperatorEnum.POW: 3
+        OperatorConst.LBR: 0,
+        OperatorConst.ADD: 1,
+        OperatorConst.SUB: 1,
+        OperatorConst.RBR: 1,
+        OperatorConst.MUL: 2,
+        OperatorConst.DIV: 2,
+        OperatorConst.MOD: 2,
+        OperatorConst.POW: 3
     }
 
     def convert(self, expression):
@@ -23,10 +23,10 @@ class Converter:
         for item in expression:
             if item not in self.priority:
                 out.append(item)
-            elif item == OperatorEnum.LBR:
+            elif item == OperatorConst.LBR:
                 stack.append(item)
-            elif item == OperatorEnum.RBR and OperatorEnum.LBR in stack:
-                while stack[len(stack) - 1] != OperatorEnum.LBR:
+            elif item == OperatorConst.RBR and OperatorConst.LBR in stack:
+                while stack[len(stack) - 1] != OperatorConst.LBR:
                     out.append(stack.pop())
                 stack.pop()
             elif not stack or self.priority.get(item) > self.priority.get(stack[len(stack) - 1]):
@@ -39,7 +39,7 @@ class Converter:
         while stack:
             out.append(stack.pop())
 
-        return list(filter(lambda elem: elem != OperatorEnum.LBR and elem != OperatorEnum.RBR, out))
+        return list(filter(lambda elem: elem != OperatorConst.LBR and elem != OperatorConst.RBR, out))
 
     def fix_expression(self, expression):
         if not expression:

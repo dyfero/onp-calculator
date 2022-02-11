@@ -1,23 +1,23 @@
 import operator
 
-from classes.constants.operator import OperatorEnum
+from classes.constants.operator import OperatorConst
 from classes.helpers.helper import is_numeric
 
 
 class Onp:
     operators = {
-        OperatorEnum.ADD: operator.add,
-        OperatorEnum.SUB: operator.sub,
-        OperatorEnum.MUL: operator.mul,
-        OperatorEnum.DIV: operator.truediv,
-        OperatorEnum.MOD: operator.mod,
-        OperatorEnum.POW: operator.pow,
+        OperatorConst.ADD: operator.add,
+        OperatorConst.SUB: operator.sub,
+        OperatorConst.MUL: operator.mul,
+        OperatorConst.DIV: operator.truediv,
+        OperatorConst.MOD: operator.mod,
+        OperatorConst.POW: operator.pow,
     }
 
     def calc(self, onp):
         stack = []
         while onp:
-            item = float(onp.pop(0))
+            item = onp.pop(0)
 
             if is_numeric(item):
                 stack.append(item)
@@ -27,4 +27,4 @@ class Onp:
                 res = self.operators[item](b, a)
                 stack.append(res)
 
-        return float(stack.pop())
+        return stack.pop()

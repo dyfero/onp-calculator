@@ -3,7 +3,7 @@
 #:import LeftBracket classes.left_bracket.LeftBracket
 #:import RightBracket classes.right_bracket.RightBracket
 #:import Sign classes.sign.Sign
-#:import OperatorEnum classes.constants.operator.OperatorEnum
+#:import OperatorConst classes.constants.operator.OperatorConst
 
 <Button>
     font_size: 32
@@ -13,6 +13,8 @@
     background_color: 10/255, 10/255, 10/255, 0.9
 
 <CalculatorLayout>
+
+
     BoxLayout:
         orientation: 'vertical'
         size: root.width, root.height
@@ -70,12 +72,12 @@
             Button:
                 id: btn_pow
                 text: '^'
-                on_press: root.append(Sign(OperatorEnum.POW))
+                on_press: root.append(Sign(OperatorConst.POW))
                 background_color: 26/255, 79/255, 163/255, 0.9
             Button:
                 id: btn_div
                 text: '/'
-                on_press: root.append(Sign(OperatorEnum.DIV))
+                on_press: root.append(Sign(OperatorConst.DIV))
                 background_color: 26/255, 79/255, 163/255, 0.9
 
             # row 2
@@ -94,7 +96,7 @@
             Button:
                 id: btn_mul
                 text: '*'
-                on_press: root.append(Sign(OperatorEnum.MUL))
+                on_press: root.append(Sign(OperatorConst.MUL))
                 background_color: 26/255, 79/255, 163/255, 0.9
 
             # row 3
@@ -113,7 +115,7 @@
             Button:
                 id: btn_sub
                 text: '-'
-                on_press: root.append(Sign(OperatorEnum.SUB))
+                on_press: root.append(Sign(OperatorConst.SUB))
                 background_color: 26/255, 79/255, 163/255, 0.9
 
             # row 4
@@ -132,7 +134,7 @@
             Button:
                 id: btn_add
                 text: '+'
-                on_press: root.append(Sign(OperatorEnum.ADD))
+                on_press: root.append(Sign(OperatorConst.ADD))
                 background_color: 26/255, 79/255, 163/255, 0.9
 
             # row 5
