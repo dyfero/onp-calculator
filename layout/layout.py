@@ -26,6 +26,5 @@ class CalculatorLayout(Widget):
         self._keyboard = None
 
     def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
-        print(modifiers)
         self._keyboard_action.action(keycode, modifiers, self.output)
 

@@ -76,7 +76,6 @@ class KeyboardAction:
         }
 
     def action(self, keycode, modifiers, output):
-        print(keycode)
         if all(elem in modifiers for elem in self.MODIFIERS) and keycode[0] in self.shift_actions:
             ob = self.shift_actions[keycode[0]]
             ob.append(output)
